@@ -1,7 +1,7 @@
 go:
     cgo: false
 repository:
-    path: github.com/mjtrangoni/flexlm_exporter
+    path: github.com/emenda/flexlm_exporter
 build:
     binaries:
         - name: flexlm_exporter

@@ -11,7 +11,7 @@ executors:
       working_dir:
         type: string
         default: ~/project
-    working_directory: /go/src/github.com/mjtrangoni/flexlm_exporter
+    working_directory: /go/src/github.com/emenda/flexlm_exporter
   python:
     docker:
     - image: circleci/python
@@ -29,8 +29,8 @@ jobs:
     executor: golang
 
     environment:
-     - DOCKER_IMAGE_NAME: "mjtrangoni/flexlm_exporter"
-     - QUAY_IMAGE_NAME: "quay.io/mjtrangoni/flexlm_exporter"
+     - DOCKER_IMAGE_NAME: "emenda/flexlm_exporter"
+     - QUAY_IMAGE_NAME: "quay.io/emenda/flexlm_exporter"
     steps:
       # checkout the project
       - checkout
