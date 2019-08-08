@@ -13,16 +13,18 @@
 [Prometheus](https://prometheus.io/) exporter for FLEXlm License Manager
 `lmstat` license information.
 
+This fork is specialised for the reduced version of FLEXlm License Manager bundled with installations of Klocwork. This reduced bundle contains lmstat as a independent tool, instead of the lmutil lmstat tool used by the parent of this fork.
+
 ## Getting
 
 ```
-$ go get github.com/mjtrangoni/flexlm_exporter
+$ go get github.com/emenda/flexlm_exporter
 ```
 
 ## Building
 
 ```
-$ cd $GOPATH/src/github.com/mjtrangoni/flexlm_exporter
+$ cd $GOPATH/src/github.com/emenda/flexlm_exporter
 $ make
 ```
 
@@ -57,7 +59,7 @@ Notes:
 ## Running
 
 ```
-$ ./flexlm_exporter <flags>
+$ ./flexlm_exporter --path.lmutil="/klocwork/3rdparty/bin/lmstat" <flags>
 ```
 
 ### Docker images
@@ -72,17 +74,17 @@ Docker images are available on,
 You can launch a *flexlm_exporter* container with,
 
 ```
-$ docker run --name flexlm_exporter -d -p 9319:9319 --volume $LMUTIL_LOCAL:/usr/bin/flexlm/ --volume $CONFIG_PATH_LOCAL:/config $DOCKER_REPOSITORY --path.lmutil="/usr/bin/flexlm/lmutil" --path.config="/config/licenses.yml"
+$ docker run --name flexlm_exporter -d -p 9319:9319 --volume $LMUTIL_LOCAL:/usr/bin/flexlm/ --volume $CONFIG_PATH_LOCAL:/config $DOCKER_REPOSITORY --path.lmutil="/usr/bin/flexlm/lmstat" --path.config="/config/licenses.yml"
 ```
 
 Metrics will now be reachable at http://localhost:9319/metrics.
 
 ## What's exported?
 
- * `lmutil lmstat -v` information.
- * `lmutil lmstat -c license_file -a` or `lmutil lmstat -c license_server -a`
+ * `lmstat -v` information.
+ * `lmstat -c license_file -a` or `lmstat -c license_server -a`
    license information.
- * `lmutil lmstat -c license_file -i` or `lmutil lmstat -c license_server -i`
+ * `lmstat -c license_file -i` or `lmstat -c license_server -i`
    license features expiration date.
 
 ## Dashboards
