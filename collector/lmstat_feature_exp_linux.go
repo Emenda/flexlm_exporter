@@ -79,12 +79,12 @@ func (c *lmstatFeatureExpCollector) getLmstatFeatureExpDate(ch chan<- prometheus
 		// Call lmstat with -i (lmstat -i does not give information from the server,
 		// but only reads the license file)
 		if licenses.LicenseFile != "" {
-			outBytes, err = lmutilOutput("lmstat", "-c", licenses.LicenseFile, "-i")
+			outBytes, err = lmutilOutput("-c", licenses.LicenseFile, "-i")
 			if err != nil {
 				continue
 			}
 		} else if licenses.LicenseServer != "" {
-			outBytes, err = lmutilOutput("lmstat", "-c", licenses.LicenseServer, "-i")
+			outBytes, err = lmutilOutput("-c", licenses.LicenseServer, "-i")
 			if err != nil {
 				continue
 			}

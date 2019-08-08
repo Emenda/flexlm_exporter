@@ -236,7 +236,7 @@ func parseLmstatLicenseInfoFeature(outStr [][]string) (map[string]*feature,
 
 // getLmstatInfo returns lmstat binary information
 func (c *lmstatCollector) getLmstatInfo(ch chan<- prometheus.Metric) error {
-	outBytes, err := lmutilOutput("lmstat", "-v")
+	outBytes, err := lmutilOutput("-v")
 	if err != nil {
 		log.Errorln(err)
 		return err
@@ -260,12 +260,12 @@ func (c *lmstatCollector) getLmstatLicensesInfo(ch chan<- prometheus.Metric) err
 	for _, licenses := range LicenseConfig.Licenses {
 		// Call lmstat with -a (display everything)
 		if licenses.LicenseFile != "" {
-			outBytes, err = lmutilOutput("lmstat", "-c", licenses.LicenseFile, "-a")
+			outBytes, err = lmutilOutput("-c", licenses.LicenseFile, "-a")
 			if err != nil {
 				continue
 			}
 		} else if licenses.LicenseServer != "" {
-			outBytes, err = lmutilOutput("lmstat", "-c", licenses.LicenseServer, "-a")
+			outBytes, err = lmutilOutput("-c", licenses.LicenseServer, "-a")
 			if err != nil {
 				continue
 			}
